@@ -1,0 +1,18 @@
+---
+# tasks file for Apache
+- name: Installation de notre apache
+  yum:
+   name: httpd
+   state: present
+
+- name: disable du firewall
+  systemd:
+   name: firewalld
+   state: stopped
+   enabled: no
+
+- name: démarrer et activativer notre serveur apache
+  systemd:
+   name: httpd
+   state: started
+   enabled: yes
